@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+<h1>Best Weights</h1>
+
+    <form action="/weight" method="POST">
+        <div class="form-group">
+            <input autocomplete="off" autofocus="" class="form-control" name="weights" placeholder="50 100 95 ..." type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Best Weights</button>
+    </form>
+</br>
+    {% if final_group %}
+        The best combination is {{final_group[0]}} with {{final_group[1]}} swaps required </br> </br>
+        {% for group in final_group[0] %}
+            Group: {{group}} -> {{final_options[group][0]}} with {{final_options[group][1]}} swaps </br>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}
